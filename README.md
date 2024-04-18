@@ -1,2 +1,2 @@
-# trading-platform-be
+# trading-platform-backend
 trading platform backend
