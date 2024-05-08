@@ -5,9 +5,10 @@ import { getCryptoHistory, getCryptoIds, getCryptoPrice } from "./logic";
 import { responseWrapper } from "./Utils/responseWrapper";
 
 const app = express();
-const PORT = 3001;
 app.use(cors());
 app.use(express.json());
+
+const PORT = process.env.PORT || 3001;
 
 app.get(
   "/ids",
