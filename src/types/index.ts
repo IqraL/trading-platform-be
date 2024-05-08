@@ -1,4 +1,4 @@
 import { CryptoId, Interval } from "./cryptoId_interval";
-import { HistoryRequest} from "./requests";
+import { HistoryRequest, PriceRequest } from "./requests";
 
-export { CryptoId, Interval,HistoryRequest };
+export { CryptoId, Interval, HistoryRequest, PriceRequest };

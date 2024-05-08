@@ -1,13 +1,19 @@
 import express, { Request, Response } from "express";
-import { information } from "./assets/list";
-import { HistoryRequest } from "./types/index";
-import { getCryptoHistory } from "./logic";
+import cors from "cors";
+import { HistoryRequest, PriceRequest } from "./types/index";
+import { getCryptoHistory, getCryptoIds, getCryptoPrice } from "./logic";
 import { responseWrapper } from "./Utils/responseWrapper";
 
 const app = express();
 const PORT = 3001;
-
+app.use(cors());
 app.use(express.json());
+
+app.get(
+  "/ids",
+  async (req: Request, res: Response) =>
+    await responseWrapper(req, res, getCryptoIds)
+);
 
 app.post(
   "/history",
@@ -15,12 +21,12 @@ app.post(
     await responseWrapper(req, res, getCryptoHistory)
 );
 
-app.get("/crypto-list", (req: Request, res: Response) => {
-  const ids = information.map((cryptoDetails: { id: any }) => {
-    return cryptoDetails.id;
-  });
-  res.send(ids);
-});
+app.post(
+  "/price",
+  async (req: PriceRequest, res: Response) =>
+    await responseWrapper(req, res, getCryptoPrice)
+);
+
 app.listen(PORT, () => {
   console.log(`listening on port ${PORT}`);
 });

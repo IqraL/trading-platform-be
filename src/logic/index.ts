@@ -1,3 +1,4 @@
 import { getCryptoHistory } from "./getCryptoHistory";
-
-export { getCryptoHistory };
+import { getCryptoIds } from "./getCryptoIds";
+import { getCryptoPrice } from "./getCryptoPrice";
+export { getCryptoHistory, getCryptoIds, getCryptoPrice };
